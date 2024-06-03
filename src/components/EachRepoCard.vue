@@ -1,21 +1,14 @@
 <script setup>
 import { defineProps, computed } from 'vue'
-import { ArrowRightIcon, TrashIcon } from '@heroicons/vue/24/outline'
+import { ArrowRightIcon } from '@heroicons/vue/24/outline'
 import { capitalizeText, formatDate } from '../utils/formatter.js'
 
 const props = defineProps(['repo'])
 const { repo } = props
 
-const distinctingText =
-  'This repo was not created from github directly, but from AltSchool github project!'
-
-// const truncatedRepoName = computed(() => {
-//   return repo.name.length > 25 ? repo.name.slice(0, 25) + '...' : repo.name
-// })
-
 const truncatedRepoName = computed(() => {
   const name = capitalizeText(repo.name)
-  return name.length > 25 ? name.slice(0, 25) + '...' : name
+  return name.length > 17 ? name.slice(0, 25) + '...' : name
 })
 </script>
 
@@ -39,13 +32,6 @@ const truncatedRepoName = computed(() => {
             More details <ArrowRightIcon class="w-4 h-4 ml-2 inline-block" />
           </button>
         </router-link>
-        <button
-          v-if="repo.description === distinctingText"
-          class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
-        >
-          <!-- @click="deleteRepository(eachRepo.name)" -->
-          <TrashIcon class="w-4 h-4 inline-block" />
-        </button>
       </div>
     </section>
   </div>

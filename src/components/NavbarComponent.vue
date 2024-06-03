@@ -3,8 +3,6 @@
     className="bg-gradient-to-r from-purple-800 via-green-800 to-red-800 p-4 flex flex-wrap items-center justify-between"
   >
     <div className="flex items-center justify-center">
-      <!-- <FaGithub className="text-white mr-2" /> -->
-      <!-- <UserIcon class="w-6 h-6 text-white" /> -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 mr-2 text-white"
@@ -30,21 +28,10 @@
         required
         aria-required="true"
       />
-      <!-- onChange="{prop.searchRepo}" -->
-
-      <!-- <ModalComponent
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          mode='create'
-        /> -->
     </div>
   </nav>
 </template>
 
-<script setup>
-// import { UserIcon } from '@heroicons/vue/24/outline'
-</script>
+<script setup></script>
 
 <style lang="css" scoped></style>
-
-const route = useRoute() const repoName = ref(route.params.repoName)

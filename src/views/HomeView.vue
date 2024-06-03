@@ -56,7 +56,6 @@ if (myGithubData) {
           <EachRepoCard v-for="repo in myGithubData.repos" :key="repo.id" :repo="repo" />
         </div>
       </div>
-      <!-- <CardListComponent :repos="myGithubData.repos" /> -->
     </div>
     <Footer />
   </main>
