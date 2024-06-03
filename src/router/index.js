@@ -10,13 +10,39 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/repo/:repoName',
+      name: 'eachrepo',
+      props: true,
+      // component: RepoLayoutView,
+      children: [
+        {
+          path: '',
+          name: 'EachRepoView ',
+          component: () => import('../views/EachRepoView.vue')
+        }
+        // {
+        //   path: 'details',
+        //   name: 'RepoDetails',
+        //   component: () => import('../views/RepoDetailsView.vue')
+        // }
+      ]
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
+    // {
+    //   path: '/404/:resource',
+    //   name: '404Resource',
+    //   component: () => import('../views/NotFoundView.vue'),
+    //   props: true
+    // },
+    // {
+    //   path: '/network-error',
+    //   name: 'NetworkError',
+    //   component: () => import('../views/NetworkErrorView.vue')
+    // }
   ]
 })
 
