@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import api from '@/services/fetchData'
 import NotFoundView from './NotFoundView.vue'
 import Loading from '../components/LoaderComponent.vue'
+import { capitalizeText, formatDate } from '../utils/formatter.js'
 
 const repoName = ref(null)
 const languages = ref([])
@@ -62,7 +63,7 @@ onMounted(async () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <span class="w-full sm:w-auto">{{ repoName }}</span>
+              <span class="w-full sm:w-auto">{{ capitalizeText(repoName) }}</span>
             </h1>
           </div>
           <div v-if="languages.length" class="flex flex-wrap mb-4">
@@ -79,13 +80,17 @@ onMounted(async () => {
           <p class="text-sm text-gray-500 mb-2">
             Default Branch: {{ repositoryData.default_branch }}
           </p>
-          <p class="text-sm text-gray-500 mb-2">Last Updated: {{ repositoryData.updated_at }}</p>
-          <p class="text-sm text-gray-500 mb-4">Created At: {{ repositoryData.created_at }}</p>
+          <p class="text-sm text-gray-500 mb-2">
+            Last Updated: {{ formatDate(repositoryData.updated_at) }}
+          </p>
+          <p class="text-sm text-gray-500 mb-4">
+            Created At: {{ formatDate(repositoryData.created_at) }}
+          </p>
           <p class="text-sm text-gray-500 mb-2">
             Last Commit Message: {{ repositoryCommits[0]?.commit?.message }}
           </p>
           <p class="text-sm text-gray-500 mb-6">
-            Last Committed: {{ repositoryCommits[0]?.commit?.author?.date }}
+            Last Committed: {{ formatDate(repositoryCommits[0]?.commit?.author?.date) }}
           </p>
           <div class="flex flex-wrap justify-between mb-3">
             <p class="text-sm text-gray-500 mb-2 md:mb-0">
