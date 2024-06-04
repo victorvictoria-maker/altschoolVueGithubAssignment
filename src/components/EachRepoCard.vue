@@ -8,7 +8,7 @@ const { repo } = props
 
 const truncatedRepoName = computed(() => {
   const name = capitalizeText(repo.name)
-  return name.length > 17 ? name.slice(0, 25) + '...' : name
+  return name.length > 17 ? name.slice(0, 17) + '...' : name
 })
 </script>
 

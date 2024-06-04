@@ -12,19 +12,12 @@ const router = createRouter({
     {
       path: '/repo/:repoName',
       name: 'eachrepo',
-      props: true,
-      // component: RepoLayoutView,
       children: [
         {
           path: '',
           name: 'EachRepoView ',
           component: () => import('../views/EachRepoView.vue')
         }
-        // {
-        //   path: 'details',
-        //   name: 'RepoDetails',
-        //   component: () => import('../views/RepoDetailsView.vue')
-        // }
       ]
     },
     {

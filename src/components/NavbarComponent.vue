@@ -1,8 +1,20 @@
+<script setup>
+import { ref } from 'vue'
+
+const emit = defineEmits(['search'])
+
+const searchQuery = ref('')
+
+const handleSearch = () => {
+  emit('search', searchQuery.value)
+}
+</script>
+
 <template>
   <nav
-    className="bg-gradient-to-r from-purple-800 via-green-800 to-red-800 p-4 flex flex-wrap items-center justify-between"
+    class="bg-gradient-to-r from-purple-800 via-green-800 to-red-800 p-4 flex flex-wrap items-center justify-between"
   >
-    <div className="flex items-center justify-center">
+    <div class="flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 mr-2 text-white"
@@ -16,22 +28,17 @@
           clip-rule="evenodd"
         />
       </svg>
-
-      <h1 className="text-white text-lg font-bold sm:mb-1 mb:4  ">victorvictoria-maker</h1>
+      <h1 class="text-white text-lg font-bold sm:mb-1 mb-4">victorvictoria-maker</h1>
     </div>
 
-    <div className="flex items-center justify-between w-full sm:w-auto">
+    <div class="flex items-center justify-between w-full sm:w-auto">
       <input
         type="text"
         placeholder="Search repo..."
-        className="px-4 py-2 bg-gray-100 text-black rounded-md focus:outline-none focus:bg-gray-100  mr-4"
-        required
-        aria-required="true"
+        class="px-4 py-2 bg-gray-100 text-black rounded-md focus:outline-none focus:bg-gray-100 mr-4"
+        v-model="searchQuery"
+        @input="handleSearch"
       />
     </div>
   </nav>
 </template>
-
-<script setup></script>
-
-<style lang="css" scoped></style>

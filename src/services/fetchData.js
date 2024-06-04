@@ -22,7 +22,7 @@ export default {
       params: {
         sort: 'updated',
         direction: 'desc',
-        per_page: 6
+        per_page: 100
       }
     })
   },
